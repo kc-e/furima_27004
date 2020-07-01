@@ -6,8 +6,8 @@
 |email|string|null: false|
 |password|string|null: false|
 |nickname|string|null: false|
-|kanji-name|string|null: false|
-|kana-name|string|null: false|
+|kanji_name|string|null: false|
+|kana_name|string|null: false|
 |birthday|integer|null: false|
 ### Association
 - has_many :products
@@ -18,7 +18,14 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|text||
-|text|text||
+|product_name|text||
+|product_explanation|text||
+|product_category|text||
+|product_condition|text||
+|delivery_pattern|text||
+|consignor_area|text||
+|delivery_days|text||
+|price|integer||
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -38,11 +45,10 @@
 ## infomationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card|integer||
-|timelimit|integer||
-|security|integer||
-|postcode|integer||
-|address|text||
+|postcode|text||
+|municipality|text||
+|street|text||
+|building_name|text||
 |phone_number|integer||
 ### Association
 - belongs_to :user
