@@ -12,6 +12,7 @@
 ### Association
 - has_many :products
 - has_many :purchases
+- has_many :infomations
 
 ## productsテーブル
 |Column|Type|Options|
@@ -22,6 +23,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :purchase
+- belongs_to :infomation
 
 ## purchasesテーブル
 |Column|Type|Options|
@@ -31,3 +33,18 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
+- belongs_to :infomation
+
+## infomationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|card|integer||
+|timelimit|integer||
+|security|integer||
+|postcode|integer||
+|address|text||
+|phone_number|integer||
+### Association
+- belongs_to :user
+- belongs_to :product
+- belongs_to :purchase
