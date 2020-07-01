@@ -18,13 +18,13 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|text||
-|product_name|text||
-|product_explanation|text||
-|product_category|text||
-|product_condition|text||
-|delivery_pattern|text||
-|consignor_area|text||
-|delivery_days|text||
+|name|text||
+|explanation|text||
+<!-- |category|text||            実際にはActiveHashを用いる -->
+<!-- |condition|text||           実際にはActiveHashを用いる -->
+<!-- |delivery_pattern|text||    実際にはActiveHashを用いる -->
+<!-- |consignor_area|text||      実際にはActiveHashを用いる -->
+<!-- |delivery_days|text||       実際にはActiveHashを用いる -->
 |price|integer||
 |user_id|integer|null: false, foreign_key: true|
 ### Association
@@ -46,7 +46,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |postcode|text||
-|municipality|text||
+|prefecture|text||
+|city|text||
 |street|text||
 |building_name|text||
 |phone_number|integer||
