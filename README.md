@@ -20,13 +20,13 @@
 |image|text||
 |name|text||
 |explanation|text||
+|price|integer||
+|user_id|integer|null: false, foreign_key: true|
 <!-- |category|text||            実際にはActiveHashを用いる -->
 <!-- |condition|text||           実際にはActiveHashを用いる -->
 <!-- |delivery_pattern|text||    実際にはActiveHashを用いる -->
 <!-- |consignor_area|text||      実際にはActiveHashを用いる -->
 <!-- |delivery_days|text||       実際にはActiveHashを用いる -->
-|price|integer||
-|user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :purchase
