@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  # has_many :items
   factory :user do
     nickname              { 'ジロウ' }
     email                 { 'kkk@gmail.com' }

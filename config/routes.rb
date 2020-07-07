@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'products#index'
+  root 'items#index'
+  resources :items, only: %i[index new create]
+  # resources
   # get 'users/sign_in', to: 'devise/sessions#create'
   # resources :devise, only: [:index, :new, :create]
 end

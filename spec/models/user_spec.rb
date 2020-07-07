@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe '#create' do
     # 1. 正規の入力情報が全て存在すれば登録できること
-    it 'is valid with a nickname, email, password, password_confirmation, 
+    it 'is valid with a nickname, email, password, password_confirmation,
         first_name_kanji, last_name_kanji, first_name_kana, last_name_kana, birthday' do
       user = build(:user)
       expect(user).to be_valid
@@ -157,5 +157,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
-

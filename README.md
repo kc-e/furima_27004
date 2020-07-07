@@ -10,11 +10,11 @@
 |kana_name|string|null: false|
 |birthday|integer|null: false|
 ### Association
-- has_many :products
+- has_many :items
 - has_many :purchases
 - has_many :infomations
 
-## productsテーブル
+## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|text||
@@ -26,7 +26,7 @@
 <!-- |condition|text||           実際にはActiveHashを用いる -->
 <!-- |delivery_pattern|text||    実際にはActiveHashを用いる -->
 <!-- |consignor_area|text||      実際にはActiveHashを用いる -->
-<!-- |delivery_days|text||       実際にはActiveHashを用いる -->
+<!-- |delivery_day|text||        実際にはActiveHashを用いる -->
 ### Association
 - belongs_to :user
 - belongs_to :purchase
@@ -39,7 +39,7 @@
 |product_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 - belongs_to :infomation
 
 ## infomationsテーブル
@@ -53,5 +53,5 @@
 |phone_number|integer||
 ### Association
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 - belongs_to :purchase
