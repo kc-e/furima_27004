@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  def index; end
+  def index
+  end
 
   def new
     @item = Item.order('created_at DESC')
@@ -7,8 +8,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
+    if @item.valid?
+      if @item.save
+        redirect_to root_path
+      else
+        render :new
+      end
     else
       render :new
     end
@@ -27,7 +32,6 @@ class ItemsController < ApplicationController
       :delivery_pattern_id,
       :consignor_area_id,
       :delivery_day_id
-    )
-          .merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id)
   end
 end

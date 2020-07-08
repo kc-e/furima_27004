@@ -12,8 +12,6 @@ FactoryBot.define do
     delivery_pattern_id     { 2 }
     consignor_area_id       { 2 }
     delivery_day_id         { 2 }
-    # user_id                 {:user}
-    # user_id                 { 2 }
-    # association :user, factory: :user
+    user                    { create(:user) }
   end
 end
