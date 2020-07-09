@@ -44,11 +44,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     add_index :users, :nickname,             unique: true
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
-    add_index :users, :first_name_kanji,     unique: true
-    add_index :users, :last_name_kanji,      unique: true
-    add_index :users, :first_name_kana,      unique: true
-    add_index :users, :last_name_kana,       unique: true
-    add_index :users, :birthday,             unique: true
+    add_index :users, :first_name_kanji
+    add_index :users, :last_name_kanji
+    add_index :users, :first_name_kana
+    add_index :users, :last_name_kana
+    add_index :users, :birthday
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
