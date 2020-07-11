@@ -7,7 +7,6 @@ app/assets/stylesheets/items/new.css %>
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%# <%= form_with local: true do |f| %> 
     <%= form_with model: @item, local: true do |f|  %> 
     
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
@@ -53,7 +52,6 @@ app/assets/stylesheets/items/new.css %>
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%# <%= f.collection_select :category_id, Category.roots, :id, :name, {include_blank: "---", selected: @item.category&.root_id}, required: true, class:"select-box" %>
         <%= f.collection_select(:category_id, Category.all, :id, :name, {selected: @item.category_id}, {class:"select-box"})  %>
         <div class="weight-bold-text">
           商品の状態
