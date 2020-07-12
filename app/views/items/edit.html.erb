@@ -52,12 +52,12 @@ app/assets/stylesheets/items/new.css %>
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:category_id, Category.all, :id, :name, {selected: @item.category_id}, {class:"select-box"})  %>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box"})  %>   <%# モデルを作成するとオプション設定がいらない？( {}内の入力が無意味？ ) %>
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:condition_id, Condition.all, :id, :name, {selected: @item.condition_id}, {class:"select-box"}) %>
+        <%= f.collection_select(:condition_id, Condition.all, :id, :name, {}, {class:"select-box"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>
