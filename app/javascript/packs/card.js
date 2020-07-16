@@ -1,13 +1,11 @@
 const pay = () => {
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
-  console.log(form)
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
-    console.log(1)
     const card = {
       number: formData.get("number"),
       cvc: formData.get("cvc"),
@@ -17,7 +15,6 @@ const pay = () => {
 
     Payjp.createToken(card, (status, response) => {
       if (status === 200) {
-        console.log(2)
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
@@ -35,5 +32,5 @@ const pay = () => {
     });
   });
 };
-console.log(3)
+
 window.addEventListener("load", pay);

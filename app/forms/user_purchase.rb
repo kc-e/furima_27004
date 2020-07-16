@@ -24,11 +24,6 @@ class UserPurchase
     validates :number, :exp_month, :exp_year, :cvc, :user_id, :item_id
   end
 
-  # クレジットカードの情報が正しくないと決済できない
-  # with_options format: { with: /\A(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6011[0-9]{12}|3(?:0[0-5]|[68][0-9])[0-9]{11}|3[47][0-9]{13})\z/ } do
-  #   validates :number
-  # end
-
   def save
     purchases = Purchase.create(user_id: user_id, item_id: item_id) # オーバーライド
     infomations = Infomation.create(
@@ -40,7 +35,6 @@ class UserPurchase
       phone_number: phone_number,
       user_id: user_id
     )
-    # card = Card.create()
     if purchases.persisted? && infomations.persisted?
       true
     else
