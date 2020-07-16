@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
 
   def index
-    @items = Item.includes(:user).order("created_at DESC")
+    @items = Item.includes(:user).order('created_at DESC')
+    @purchases = Purchase.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -18,12 +19,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
-  
+  def edit; end
+
   def update
     if @item.update(item_params)
       redirect_to item_path(@item.id)
@@ -60,4 +59,3 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
-

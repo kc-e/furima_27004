@@ -1,5 +1,8 @@
 class Item < ApplicationRecord
   belongs_to :user
+  # belongs_to :infomation
+  has_one :purchase
+
   # 画像は1枚必須であること
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions

@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :infomations
+  has_many :purchases
 
   with_options presence: true do
     validates :nickname, uniqueness: { case_sensitive: false }, length: { maximum: 6 }

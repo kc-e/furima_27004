@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :user do
-    nickname              { 'ジロウ' }
-    email                 { 'kkk@gmail.com' }
+  factory :user, aliases: [:user_id] do
+    nickname              { 'ジロ' }
+    email                 { 'ooo@gmail.com' }
     password              { '00000000a' }
     password_confirmation { '00000000a' }
     first_name_kanji      { '田中' }
