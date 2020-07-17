@@ -10,7 +10,6 @@ FactoryBot.define do
     street                    { '青山1-1-1' }
     building_name             { 'トンチンカン' }
     phone_number              { '09012345678' }
-    # user                      { create(:user) }
     association :user
     association :item
   end

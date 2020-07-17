@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Purchase, type: :model do
   describe '#create' do
     before do
-      # @user = create(:user)
       @purchase = build(:purchase)
     end
 

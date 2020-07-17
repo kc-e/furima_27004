@@ -1,5 +1,4 @@
 FactoryBot.define do
-  # belongs_to :user
   factory :item, aliases: [:item_id] do
     after(:build) do |item|
       item.image = Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'files', 'test_image.jpg'), 'image/jpg')
@@ -12,7 +11,6 @@ FactoryBot.define do
     delivery_pattern_id     { 2 }
     consignor_area_id       { 2 }
     delivery_day_id         { 2 }
-    # user                    { create(:user) }
     association :user
   end
 end
