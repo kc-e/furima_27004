@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  
   describe '#create' do
-  
     before do
-      # @user = create(:user)
       @item = build(:item)
     end
 
@@ -88,7 +85,7 @@ RSpec.describe Item, type: :model do
 
     # 12. 価格が、¥¥9,999,999より高い場合、出品できないこと
     it 'is invalid with a price higher than 9,999,999' do
-      @item.price = 10000000
+      @item.price = 10_000_000
       @item.valid?
       expect(@item.errors[:price]).to include('must be less than 9999999')
     end
