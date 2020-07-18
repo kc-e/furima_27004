@@ -35,7 +35,6 @@ class UserPurchase
       phone_number: phone_number,
       user_id: user_id
     )
-    
     if purchases.persisted? && infomations.persisted?
       true
     else
