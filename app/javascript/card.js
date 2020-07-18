@@ -6,7 +6,8 @@ window.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e)=> {
     console.log("check")
     e.preventDefault();
-  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+  // Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+  Payjp.setPublicKey('pk_test_2d43a0765d31e8009075b356');
   
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
