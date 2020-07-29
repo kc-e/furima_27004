@@ -68,6 +68,7 @@ gem 'payjp'
 gem 'pry-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem "aws-sdk-s3", require: false
+gem 'rails-i18n'
 
 group :production do
   gem 'rails_12factor'

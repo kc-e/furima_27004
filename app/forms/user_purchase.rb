@@ -5,8 +5,9 @@ class UserPurchase
 
   # 空の投稿を保存できないようにする
   with_options presence: true do
-    validates :postcode, :prefecture_id, :city, :street,
-              :phone_number
+    validates :postcode, :city, :street,
+              :phone_number,
+              :number, :exp_month, :exp_year, :cvc, :user_id, :item_id
   end
 
   # 郵便番号にはハイフン（-）が必要
@@ -19,9 +20,9 @@ class UserPurchase
     validates :phone_number
   end
 
-  # 空の投稿を保存できないようにする
-  with_options presence: true do
-    validates :number, :exp_month, :exp_year, :cvc, :user_id, :item_id
+  # 選択が「--」のままになっていないか
+  with_options numericality: { other_than: 1 } do
+    validates :prefecture_id
   end
 
   def save
