@@ -1,0 +1,2 @@
+module SnsCredentialsHelper
+end
