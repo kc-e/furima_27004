@@ -1,0 +1,61 @@
+<%= render "shared/header" %>
+
+<div class='form-header'>
+  <h1 class='form-header-text'>
+    検索結果
+  </h1>
+</div>
+<%# 検索結果の個数で条件分岐 %>
+<ul class='item-lists'>
+  <% if @results.length != 0 %>       
+    <% @results.each do |item| %>
+      <li class='list'>
+        <%= link_to item_path(item.id) do %>
+          <div class='item-img-content'>
+            <%= image_tag item.image, class: "item-img" %>
+
+            <%# 商品が売れていればsold outの表示 %>
+            <% @purchases.each do |purchase| %>
+              <% if purchase.item_id == item.id %>  
+                <div class='sold-out'>
+                <span>Sold Out!!</span>
+                </div>
+              <% end %> 
+            <% end %>   
+            <%# //商品が売れていればsold outの表示 %>
+
+          </div>
+          <div class='item-info'>
+            <h3 class='item-name'>
+              <%= item.name %>
+
+            </h3>
+            <div class='item-price'>
+              <span><%= item.price %>円<br>(税込み)</span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  <% else %>
+    該当する商品はありません
+  <% end %>
+</ul>
+<br>
+<div class='purchase-btn'>
+  <span class='purchase-btn-text'>出品する</span>
+  <a href="../items/new">
+    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  </a>
+</div>
+<div class='search-btn'>
+  <span class='search-btn-text'>検索する</span>
+  <a href="../searches/index">
+    <%= image_tag 'search.png' , size: '185x50' ,class: "search-btn-icon" %>
+  </a>
+</div>
+<%= render "shared/footer" %> 

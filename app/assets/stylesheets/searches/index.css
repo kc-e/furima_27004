@@ -1,0 +1,29 @@
+.search-list {
+  height: 40px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.search-text {
+  display: flex;
+  justify-content: center;
+}
+
+.radio_btn {
+  display: flex;
+  justify-content: center;
+}
+
+.sea {
+  display: block;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  width: 15%;
+  height: 50px;
+  font-size: 14px;
+  margin-bottom: 4vh;
+  margin-right: auto;
+  margin-left: auto;
+}

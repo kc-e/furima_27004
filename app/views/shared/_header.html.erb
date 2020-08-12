@@ -2,17 +2,24 @@
 <header class='top-page-header'>
   <div class='search-bar-contents'>
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-    <form class="search-form" action="#">
+    <%# <form class="search-form" action="/searches/index">
       <input class='input-box' placeholder='キーワードから探す'>
       <button class="search-button">
         <%= image_tag "search.png", class:"search-icon" %>
-      </button>
-    </form>
+      <%# </button> %>
+    <%# </form>  %>
+    <%= form_with(url: searches_search_path, local: true, method: :get, class: "search-form") do |f| %>
+      <%= f.text_field :keyword, placeholder: "キーワードから探す", class: "input-box" %>
+      <label class='search-button'>
+        <%= f.submit "検索", class:"search-command" %>
+        <%= image_tag "search.png", class:"search-icon" %>
+      </label>
+    <% end %>
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li><%= link_to 'カテゴリー', searches_index_path, class: "category-list" %></li>
+      <li><%= link_to 'ブランド', searches_index_path, class: "brand-list" %></li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
@@ -20,8 +27,6 @@
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li> 
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <%# <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-        <%# </li> %> 
         <li><%= link_to '新規登録', sns_credentials_new_path, class: "sign-up" %></li>
       <% end %>
     </ul>

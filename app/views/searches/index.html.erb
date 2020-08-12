@@ -1,0 +1,111 @@
+<%= render "shared/header" %>
+
+<div class='form-header'>
+  <h1 class='form-header-text'>
+    商品検索
+  </h1>
+</div>
+  <%= search_form_for @p, url: searches_search_path, class: "search-lists" do |f| %>
+    <%= f.label :name_eq, '商品名', class: "search-text" %>
+    <%= f.collection_select :name_eq, @item_name, :name, :name, {include_blank: '指定しない'}, class: "search-list"  %>
+    <br>
+    <%= f.label :category_id_eq, 'カテゴリー', class: "search-text" %> 
+    <%= f.collection_select(:category_id_eq, Category.all, :id, :name, {include_blank: '指定しない'}, class: "search-list" ) %>
+    <br>
+    <%= f.label :condition_id_eq, '商品状態', class: "search-text" %>
+    <%= f.collection_select(:condition_id_eq, Condition.all, :id, :name, {include_blank: '指定しない'}, class: "search-list" ) %>
+    <br>
+    <%= f.label :delivery_pattern_id_eq, '配送料の負担', class: "search-text" %>
+    <%= f.collection_select(:delivery_pattern_id_eq, DeliveryPattern.all, :id, :name, {include_blank: '指定しない'}, class: "search-list" ) %>
+    <br>
+    <%= f.label :price, '価格', class:"radio_btn" %>
+    <div class='radio_btn'>
+      <%= f.radio_button :price_lteq, '' %>
+      指定なし
+      <%= f.radio_button :price_lteq, '500' %>
+      500円以下
+      <%= f.radio_button :price_lteq, '1000' %>
+      1000円以下
+      <%= f.radio_button :price_lteq, '5000' %>
+      5000円以下
+      <%= f.radio_button :price_lteq, '10000' %>
+      10000円以下
+    </div>
+    <br>
+    <%# <div class='search-comman'> %>
+    <%= f.submit '検索', class: "sea" %>
+    <%# </div> %>
+    <br>
+    <div class='form-header'>
+      <h1 class='form-header-text'>
+       商品一覧
+      </h1>
+    </div>
+    <ul class='item-lists'>
+      <%# 商品一覧 %>
+      <% @items.each do |item| %>
+        <% if item.persisted? %>
+          <li class='list'>
+            <%= link_to item_path(item.id) do %>
+              <div class='item-img-content'>
+                <%= image_tag item.image, class: "item-img" %>
+
+                <%# 商品が売れていればsold outの表示 %>
+                <% @purchases.each do |purchase| %>
+                  <% if purchase.item_id == item.id %>  
+                    <div class='sold-out'>
+                     <span>Sold Out!!</span>
+                    </div>
+                  <% end %> 
+                <% end %>   
+                <%# //商品が売れていればsold outの表示 %>
+
+              </div>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  <%= item.name %>
+                    
+                </h3>
+                <div class='item-price'>
+                  <span><%= item.price %>円<br>(税込み)</span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+          <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+        <% else %>
+          <%# 商品がない場合のダミー %>
+          <%# 商品がある場合は表示されないようにしましょう %>
+          <li class='list'>
+            <%= link_to '#' do %>
+              <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
+              <div class='item-info'>
+                <h3 class='item-name'>
+                  商品を出品してね！
+                </h3>
+                <div class='item-price'>
+                  <span>99999999円<br>(税込み)</span>
+                  <div class='star-btn'>
+                    <%= image_tag "star.png", class:"star-icon" %>
+                    <span class='star-count'>0</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+<div class='purchase-btn'>
+  <span class='purchase-btn-text'>出品する</span>
+  <a href="../items/new">
+    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  </a>
+</div>
+
+<%= render "shared/footer" %> 
